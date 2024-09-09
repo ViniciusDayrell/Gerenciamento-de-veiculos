@@ -2,10 +2,6 @@ package entities;
 
 import java.util.ArrayList;
 import java.util.List;
-/*
- * A classe deve possuir metodos para cadastrarMotorista(), cadastrarVeiculo(),
- * registrarManutencao()
- */
 
 public class Empresa {
     private List<Motorista> motoristas;
@@ -46,12 +42,14 @@ public class Empresa {
         }
     }
 
-    public void buscaMotorista(String cpf) {
+    public boolean buscaMotorista(String cpf) {
         for (Motorista motorista : motoristas) {
             if (motorista.getCpf().equals(cpf)) {
                 System.out.println(motorista);
+                return true;
             }
         }
+        return false;
     }
 
     public void buscaVeiculo(String chassi) {

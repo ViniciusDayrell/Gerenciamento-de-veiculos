@@ -4,9 +4,9 @@ public class Motorista {
     private String nome;
     private int idade;
     private String cpf;
-    private char categoriaCNH;
+    private String categoriaCNH;
 
-    public Motorista(String nome, int idade, String cpf, char categoriaCNH) {
+    public Motorista(String nome, int idade, String cpf, String categoriaCNH) {
         this.nome = nome;
         this.idade = idade;
         this.cpf = cpf;
@@ -25,7 +25,7 @@ public class Motorista {
         return cpf;
     }
 
-    public char getCategoriaCNH() {
+    public String getCategoriaCNH() {
         return categoriaCNH;
     }
 
