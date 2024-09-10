@@ -77,8 +77,12 @@ public class App {
                             System.out.printf("Cilindrada: ");
                             int cilindrada = sc.nextInt();
 
-                            Moto moto = new Moto(marca1, modelo1, ano1, cor1, chassi1, cilindrada);
-                            empresa.cadastrarVeiculo(moto);
+                            if (empresa.buscaVeiculo(chassi1) == null) {
+                                Moto moto = new Moto(marca1, modelo1, ano1, cor1, chassi1, cilindrada);
+                                empresa.cadastrarVeiculo(moto);
+                            } else {
+                                System.out.println("Veiculo ja cadastrado!");
+                            }
 
                             break;
 
@@ -99,9 +103,13 @@ public class App {
                             System.out.printf("Tipo de combustivel: ");
                             String tipoCombustivel = sc.nextLine();
 
-                            Carro carro = new Carro(marca2, modelo2, ano2, cor2, chassi2, numeroDePortas,
-                                    tipoCombustivel);
-                            empresa.cadastrarVeiculo(carro);
+                            if (empresa.buscaVeiculo(chassi2) == null) {
+                                Carro carro = new Carro(marca2, modelo2, ano2, cor2, chassi2, numeroDePortas,
+                                        tipoCombustivel);
+                                empresa.cadastrarVeiculo(carro);
+                            } else {
+                                System.out.println("Veiculo ja cadastrado!");
+                            }
 
                             break;
 
@@ -122,9 +130,13 @@ public class App {
                             System.out.printf("Capacidade de Carga: ");
                             double capacidadeDeCarga = sc.nextDouble();
 
-                            Caminhao caminhao = new Caminhao(marca3, modelo3, ano3, cor3, chassi3, numeroDeEixos,
-                                    capacidadeDeCarga);
-                            empresa.cadastrarVeiculo(caminhao);
+                            if (empresa.buscaVeiculo(chassi3) == null) {
+                                Caminhao caminhao = new Caminhao(marca3, modelo3, ano3, cor3, chassi3, numeroDeEixos,
+                                        capacidadeDeCarga);
+                                empresa.cadastrarVeiculo(caminhao);
+                            } else {
+                                System.out.println("Veiculo ja cadastrado!");
+                            }
 
                             break;
 
@@ -155,7 +167,7 @@ public class App {
                             break;
 
                         case 2:
-                            System.out.println("Opcao invalida! Voltando ao menu principal");
+                            System.out.println("------Veiculos cadastrados------");
                             empresa.listarVeiculos();
                             break;
 

@@ -38,27 +38,60 @@ public class Empresa {
     }
 
     public void listarVeiculos() {
-        System.out.println("Motos:");
-        for (Veiculo veiculo1 : veiculos) {
-            if (veiculo1 instanceof Moto) {
-                System.out.println(veiculo1);
-                System.out.println();
+        boolean existemMotos = false;
+        boolean existemCarros = false;
+        boolean existemCaminhoes = false;
+
+        // Verifica se existem veiculos de cada tipo
+        for (Veiculo veiculo : veiculos) {
+            if (veiculo instanceof Moto) {
+                existemMotos = true;
+                break;
             }
         }
 
-        System.out.println("Carros:");
-        for (Veiculo veiculo2 : veiculos) {
-            if (veiculo2 instanceof Carro) {
-                System.out.println(veiculo2);
-                System.out.println();
+        for (Veiculo veiculo : veiculos) {
+            if (veiculo instanceof Carro) {
+                existemCarros = true;
+                break;
             }
         }
 
-        System.out.println("Caminhoes:");
-        for (Veiculo veiculo3 : veiculos) {
-            if (veiculo3 instanceof Caminhao) {
-                System.out.println(veiculo3);
-                System.out.println();
+        for (Veiculo veiculo : veiculos) {
+            if (veiculo instanceof Caminhao) {
+                existemCaminhoes = true;
+                break;
+            }
+        }
+
+        // Faz a listagem dos veiculos caso existao
+        if (existemMotos) {
+            System.out.println("Motos:");
+            for (Veiculo veiculo : veiculos) {
+                if (veiculo instanceof Moto) {
+                    System.out.println(veiculo);
+                    System.out.println();
+                }
+            }
+        }
+
+        if (existemCarros) {
+            System.out.println("Carros:");
+            for (Veiculo veiculo : veiculos) {
+                if (veiculo instanceof Carro) {
+                    System.out.println(veiculo);
+                    System.out.println();
+                }
+            }
+        }
+
+        if (existemCaminhoes) {
+            System.out.println("Caminhoes:");
+            for (Veiculo veiculo : veiculos) {
+                if (veiculo instanceof Caminhao) {
+                    System.out.println(veiculo);
+                    System.out.println();
+                }
             }
         }
     }
@@ -72,12 +105,13 @@ public class Empresa {
         return null;
     }
 
-    public void buscaVeiculo(String chassi) {
+    public Veiculo buscaVeiculo(String chassi) {
         for (Veiculo veiculo : veiculos) {
             if (veiculo.getChassi().equalsIgnoreCase(chassi)) {
-                System.out.println(veiculo);
+                return veiculo;
             }
         }
+        return null;
     }
 
     public void registrarManutencao(Veiculo veiculo) {
