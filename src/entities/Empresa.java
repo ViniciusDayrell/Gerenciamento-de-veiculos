@@ -33,23 +33,43 @@ public class Empresa {
     public void listarMotoristas() {
         for (Motorista motorista : motoristas) {
             System.out.println(motorista);
+            System.out.println();
         }
     }
 
     public void listarVeiculos() {
-        for (Veiculo veiculo : veiculos) {
-            System.out.println(veiculo);
+        System.out.println("Motos:");
+        for (Veiculo veiculo1 : veiculos) {
+            if (veiculo1 instanceof Moto) {
+                System.out.println(veiculo1);
+                System.out.println();
+            }
+        }
+
+        System.out.println("Carros:");
+        for (Veiculo veiculo2 : veiculos) {
+            if (veiculo2 instanceof Carro) {
+                System.out.println(veiculo2);
+                System.out.println();
+            }
+        }
+
+        System.out.println("Caminhoes:");
+        for (Veiculo veiculo3 : veiculos) {
+            if (veiculo3 instanceof Caminhao) {
+                System.out.println(veiculo3);
+                System.out.println();
+            }
         }
     }
 
-    public boolean buscaMotorista(String cpf) {
+    public Motorista buscaMotorista(String cpf) {
         for (Motorista motorista : motoristas) {
-            if (motorista.getCpf().equals(cpf)) {
-                System.out.println(motorista);
-                return true;
+            if (motorista.getCpf().equalsIgnoreCase(cpf)) {
+                return motorista;
             }
         }
-        return false;
+        return null;
     }
 
     public void buscaVeiculo(String chassi) {
