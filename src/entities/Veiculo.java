@@ -6,7 +6,6 @@ public class Veiculo {
     private int ano;
     private String cor;
     private String chassi;
-    private boolean manutencao = false;
 
     public Veiculo(String marca, String modelo, int ano, String cor, String chassi) {
         this.marca = marca;
@@ -36,18 +35,16 @@ public class Veiculo {
         return chassi;
     }
 
-    public boolean isManutencao() {
-        return manutencao;
-    }
-
-    public void realizarManutencao() {
-        this.manutencao = true;
-        System.out.println("Manutençao realizada com sucesso!");
-    }
-
     @Override
     public String toString() {
-        return "Veiculo = " + marca + " " + modelo + ", ano: " + ano + ", cor: " + cor;
+        return "Veiculo = "
+                + marca
+                + " "
+                + modelo
+                + ", ano: "
+                + ano
+                + ", cor: "
+                + cor;
     }
 
 }

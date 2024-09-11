@@ -64,7 +64,7 @@ public class Empresa {
             }
         }
 
-        // Faz a listagem dos veiculos caso existao
+        // Faz a listagem dos veiculos caso existam
         if (existemMotos) {
             System.out.println("Motos:");
             for (Veiculo veiculo : veiculos) {
@@ -115,8 +115,33 @@ public class Empresa {
     }
 
     public void registrarManutencao(Veiculo veiculo) {
-        veiculosEmManutencao.add(veiculo);
-        veiculo.realizarManutencao();
+        if (!veiculosEmManutencao.contains(veiculo)) {
+            veiculosEmManutencao.add(veiculo);
+            System.out.println(
+                    "Manutenção do veiculo " + veiculo.getMarca() + " " + veiculo.getModelo() + " registrada!");
+        } else {
+            System.out.println("Veiculo ja esta em manutencao!");
+        }
+
+    }
+
+    public void finalizarManutencao(Veiculo veiculo) {
+        if (veiculosEmManutencao.remove(veiculo)) {
+            System.out.println("Manutencao finalizada com sucesso!");
+        } else {
+            System.out.println("Veiculo nao esta em manutencao!");
+        }
+    }
+
+    public void listarVeiculosEmManutencao() {
+        for (Veiculo veiculo : veiculosEmManutencao) {
+            System.out.println(veiculo);
+            System.out.println();
+        }
+    }
+
+    public boolean isEmManutecao(Veiculo veiculo) {
+        return veiculosEmManutencao.contains(veiculo);
     }
 
 }

@@ -13,6 +13,7 @@ import entities.Carro;
 import entities.Empresa;
 import entities.Moto;
 import entities.Motorista;
+import entities.Veiculo;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -24,7 +25,7 @@ public class App {
             System.out.println("------Menu------");
             System.out.println("1 - Cadastrar motorista");
             System.out.println("2 - Cadastrar veiculo");
-            System.out.println("3 - Registrar manutencao");
+            System.out.println("3 - Manutencao");
             System.out.println("4 - Localizacao");
             System.out.println("5 - Listagens");
             System.out.println("6 - Sair");
@@ -147,6 +148,54 @@ public class App {
                     break;
                 case 3:
                     // Funcionalidade para registrar manutencao
+                    System.out.println("------Manutencao------");
+                    System.out.println("1 - Registrar manutencao");
+                    System.out.println("2 - Finalizar manutencao");
+                    System.out.println("3 - Veiculos em manutencao");
+                    System.out.printf("Escolha uma opcao: ");
+                    int manutencao = sc.nextInt();
+                    switch (manutencao) {
+                        case 1:
+                            System.out.println("------Registrar Manutencao------");
+                            System.out.printf("Entre com o chassi do veiculo: ");
+                            sc.nextLine();
+                            String registro = sc.nextLine();
+                            Veiculo veiculo = empresa.buscaVeiculo(registro);
+                            if (veiculo == null) {
+                                System.out.println("Veiculo nao cadastrado!");
+                            } else if (empresa.isEmManutecao(veiculo)) {
+                                System.out.println("O veiculo " + veiculo.getMarca() + " " + veiculo.getModelo()
+                                        + " ja esta em manutencao!");
+                            } else {
+                                empresa.registrarManutencao(veiculo);
+                            }
+                            break;
+
+                        case 2:
+                            System.out.println("------Finalizar Manutencao------");
+                            System.out.printf("Entre com o chassi do veiculo: ");
+                            sc.nextLine();
+                            String finaliza = sc.nextLine();
+                            Veiculo veiculo2 = empresa.buscaVeiculo(finaliza);
+                            if (veiculo2 == null) {
+                                System.out.println("Veiculo nao cadastrado!");
+                            } else if (!empresa.isEmManutecao(veiculo2)) {
+                                System.out.println("O veiculo " + veiculo2.getMarca() + " " + veiculo2.getModelo()
+                                        + " nao esta em manutencao!");
+                            } else {
+                                empresa.finalizarManutencao(veiculo2);
+                            }
+                            break;
+
+                        case 3:
+                            System.out.println("------Veiculos em manutencao------");
+                            empresa.listarVeiculosEmManutencao();
+                            break;
+
+                        default:
+                            System.out.println("Opcao invalida! Voltando ao menu principal");
+                            break;
+                    }
                     break;
 
                 case 4:
