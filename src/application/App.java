@@ -1,7 +1,7 @@
 package application;
 /*
  * O sistema deve possuir um menu para realizar as seguintes operacoes:
- * cadastrar motoristas*, cadastrar carros, caminhoes e motos
+ * cadastrar motoristas, cadastrar carros, caminhoes e motos
  * registrar manutencoes e rastrear a localizacao dos veiculos
  * O sistema deve incluir as classes: empresa, motorista, veiculo, localidade?
  */
@@ -200,6 +200,46 @@ public class App {
 
                 case 4:
                     // Funcionalidade para registrar a localizacao
+                    System.out.println("------Rastreamento de veiculos------");
+                    System.out.println("1 - Atualizar cidade de um veiculo");
+                    System.out.println("2 - Visualizar cidade de um veiculo");
+                    System.out.printf("Escolha uma opcao: ");
+                    int local = sc.nextInt();
+                    switch (local) {
+                        case 1:
+                            System.out.printf("Entre com o chassi do veiculo: ");
+                            sc.nextLine();
+                            String chassi = sc.nextLine();
+                            Veiculo veiculo = empresa.buscaVeiculo(chassi);
+                            if (veiculo == null) {
+                                System.out.println("Veiculo nao cadastrado!");
+                            } else {
+                                System.out.printf("Informe a cidade: ");
+                                String cidade = sc.nextLine();
+                                veiculo.setCidade(cidade);
+                                System.out.println("Cidade atualizada!");
+                            }
+
+                            break;
+
+                        case 2:
+                            System.out.printf("Entre com o chassi do veiculo: ");
+                            sc.nextLine();
+                            String chassiBusca = sc.nextLine();
+                            Veiculo veiculo2 = empresa.buscaVeiculo(chassiBusca);
+                            if (veiculo2 == null) {
+                                System.out.println("Veiculo nao cadastrado!");
+                            } else {
+                                System.out.println("Localizacao do veiculo:");
+                                System.out.println("Veiculo: " + veiculo2.getMarca() + veiculo2.getModelo());
+                                System.out.println("Cidade: " + veiculo2.getCidade());
+                            }
+                            break;
+
+                        default:
+                            System.out.println("Opcao invalida! Voltando ao menu principal");
+                            break;
+                    }
                     break;
 
                 case 5:

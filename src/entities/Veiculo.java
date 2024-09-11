@@ -6,6 +6,7 @@ public class Veiculo {
     private int ano;
     private String cor;
     private String chassi;
+    private String cidade;
 
     public Veiculo(String marca, String modelo, int ano, String cor, String chassi) {
         this.marca = marca;
@@ -13,6 +14,7 @@ public class Veiculo {
         this.ano = ano;
         this.cor = cor;
         this.chassi = chassi;
+        this.cidade = "Indefinido";
     }
 
     public String getMarca() {
@@ -33,6 +35,14 @@ public class Veiculo {
 
     public String getChassi() {
         return chassi;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     @Override
